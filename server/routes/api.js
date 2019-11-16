@@ -8,6 +8,8 @@ var mongoose = require('mongoose');
 var mongoDB = 'mongodb://127.0.0.1/testdb1';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
+var User = require('../../db/model/user');
+
 //Get the default connection
 var db = mongoose.connection;
 
