@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataintegrateService } from '../dataintegrate.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: DataintegrateService) { }
 
   ngOnInit() {
+  }
+
+  signUp() {
+
   }
 
 }
