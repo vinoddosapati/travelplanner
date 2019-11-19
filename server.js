@@ -1,16 +1,19 @@
 // Get dependencies
+require("./db/connection/mongodb");
+
 const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
-// Get our API routes
-const api = require('./server/routes/api.js');
-
-const user = require('./db/controller/userController');
-
 const app = express();
 
+// Get our API routes
+const api = require('./server/routes/api.js');
+const user = require('./db/controller/userController');
+// Set our api routes
+app.use('/api', api);
+app.use('/user', user);
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,9 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/travelplanner')));
 
-// Set our api routes
-app.use('/api', api);
-app.use('/user', user);
+
 
 
 app.use(function(req, res, next) {

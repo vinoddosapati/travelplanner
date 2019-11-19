@@ -1,18 +1,11 @@
 // grab the things we need
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
 // create a schema
-var userSchema = new Schema({
+var userSchema = new mongoose.Schema({
   name: String,
-  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  admin: Boolean,
-  location: String,
-  meta: {
-    age: Number,
-    website: String
-  },
-  created_at: Date,
-  updated_at: Date
 });
+
+mongoose.model('user', userSchema);

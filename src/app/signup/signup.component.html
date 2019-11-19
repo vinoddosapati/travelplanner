@@ -7,36 +7,38 @@
             <h1>Register</h1>
           </div>
         </div>
+        <form #it="ngForm" (ngSubmit)="onSubmit(it)" novalidate>
         <div class="row align-items-center">
           <div class="col mt-4">
-            <input type="text" class="form-control" placeholder="Email">
+            <input ngModel name = "Email" #Email="ngModel" type="email" required class="form-control" placeholder="Email">
           </div>
         </div>
         <div class="row align-items-center mt-4">
           <div class="col">
-            <input type="email" class="form-control" placeholder="Full Name">
+            <input ngModel name="firstName" #firstName="ngModel" required type="text" class="form-control" placeholder="Full Name">
           </div>
         </div>
         <div class="row align-items-center mt-4">
           <div class="col">
-            <input type="password" class="form-control" placeholder="Password">
+            <input ngModel name="pswd" #pswd="ngModel" required type="password" class="form-control" placeholder="Password">
           </div>
           <div class="col">
-            <input type="password" class="form-control" placeholder="Confirm Password">
+            <input ngModel name="newpswd" #newpswd="ngModel" required type="password" class="form-control" placeholder="Confirm Password">
           </div>
         </div>
         <div class="row justify-content-start mt-4">
           <div class="col">
-            <div class="form-check">
+            <!-- <div class="form-check">
               <label class="form-check-label">
                 <input type="checkbox" class="form-check-input">
                 I Read and Accept <a href="">Terms and Conditions</a>
               </label>
-            </div>
+            </div> -->
 
-            <button (click)="signUp()" class="btn btn-primary mt-4">Submit</button>
+            <button (click)="signUp(Email)" class="btn btn-primary mt-4">Submit</button>
           </div>
         </div>
+      </form>
       </div>
     </div>
   </div>
