@@ -8,10 +8,9 @@ const userSchema1 = mongoose.model('user');
 
 /* GET api listing. */
 router.post('/userCreate', (req, res) => {
-  console.log("req body"+req.query.firstName);
-  console.log("server user create" + req.originalUrl)
+  // console.log("req body"+req.query.firstName);
+  // console.log("server user create" + req.originalUrl)
   insertUser(req, res);
-  // res.send('User Created --- Signup');
 });
 
 
@@ -20,8 +19,9 @@ router.get('/userDelete', (req, res) => {
   res.send('User Delete --- Remove');
 });
 
-router.get('/userDetails', (req, res) => {
-
+router.get('/userSearch', (req, res) => {
+  console.log("asd "+ req.query.userName);
+  console.log("query" + req.originalUrl)
   res.send('User Details --- Get Info');
 });
 
@@ -37,7 +37,13 @@ function insertUser(req, res) {
   user.name = req.query.firstName;
   user.email = req.query.Email;
   user.password = req.query.pswd;
-  user.save();
+  user.save(function(err, guest) {
+    if(err) {
+      return console.error('Error during document inseert ' + err);
+    }else {
+      res.json({ status: 200 });
+    }
+  });
 }
 
 module.exports = router;

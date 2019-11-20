@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  temp: any;
 
   constructor(private dataService: DataintegrateService) { }
 
@@ -19,11 +20,8 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(it: NgForm) {
-    this.dataService.createUser(it);
-    // console.log(it.value);  // { first: '', last: '' }
-    // console.log(it.valid);  // false
-    // console.log(it.value.firstName);
-
+    this.dataService.createUser(it).subscribe(data => { this.temp = data.status; });
+    console.log('temp value ' + this.temp);
   }
 
 }
