@@ -20,15 +20,25 @@ router.get('/userDelete', (req, res) => {
 });
 
 router.get('/userSearch', (req, res) => {
-  console.log("asd "+ req.query.userName);
-  console.log("query" + req.originalUrl)
-  res.send('User Details --- Get Info');
+  getUserInfo(req, res);
+  //res.send('User Details --- Get Info');
 });
 
 router.get('/userUpdate', (req, res) => {
 
   res.send('User Update --- Edit profile');
 });
+
+function getUserInfo(req, res) {
+  console.log("asd "+ JSON.stringify(req.query));
+  console.log("query" + req.originalUrl);
+  userSchema1.findOne({"name":req.query.userName,"password":req.query.password}, function(err, user) {
+    if (err) {throw err;}
+    // object of the user
+    console.log('user info ' + user);
+    res.send(user);
+  });
+}
 
 // SignUp
 function insertUser(req, res) {

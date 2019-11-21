@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     console.log('cred ' + JSON.stringify(it.value));
     console.log('cred ' + it.value);
     this.dataservice.loginUser(it).subscribe(data => {
-      console.log(data.results);
+      console.log('---' + data.name);
     });
   }
 }
