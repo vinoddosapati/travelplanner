@@ -13,6 +13,10 @@ router.post('/userCreate', (req, res) => {
   insertUser(req, res);
 });
 
+router.get('/allusers', (req, res) => {
+  getallUser(req, res);
+  //res.send('User Delete --- Remove');
+});
 
 router.get('/userDelete', (req, res) => {
 
@@ -37,6 +41,17 @@ function getUserInfo(req, res) {
     // object of the user
     console.log('user info ' + user);
     res.send(user);
+  });
+}
+
+function getallUser(req, res) {
+  console.log("asd "+ JSON.stringify(req.query));
+  console.log("query" + req.originalUrl);
+  userSchema1.find({}, function(err, users) {
+    if (err) {throw err;}
+    // object of the user
+    console.log('user info ' + users);
+    res.send(users);
   });
 }
 

@@ -22,4 +22,8 @@ export class DataintegrateService {
     return this._httpClient.get<any>('/user/userSearch', {params: it.value});
   }
 
+  getAllUsers() {
+    return this._httpClient.get<any>('/user/allusers');
+  }
+
 }

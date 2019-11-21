@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataintegrateService } from '../dataintegrate.service';
 
 @Component({
   selector: 'app-details',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataservice: DataintegrateService) { }
 
   ngOnInit() {
+    this.dataservice.getAllUsers().subscribe(data => {
+      console.log('all users ' + JSON.stringify(data));
+    });
   }
 
 }
