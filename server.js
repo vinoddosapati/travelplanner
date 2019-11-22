@@ -11,9 +11,12 @@ const app = express();
 // Get our API routes
 const api = require('./server/routes/api.js');
 const user = require('./db/controller/userController');
+const package = require('./db/controller/packageController');
 // Set our api routes
 app.use('/api', api);
 app.use('/user', user);
+app.use('/package', package);
+
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

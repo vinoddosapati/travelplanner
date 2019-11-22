@@ -26,4 +26,13 @@ export class DataintegrateService {
     return this._httpClient.get<any>('/user/allusers');
   }
 
+  createPackage(it: any) {
+    console.log('dataservice ' + JSON.stringify(it));
+    return this._httpClient.post<any>('/package/packagecreate', '', {params: it});
+  }
+
+  getAllPackages() {
+    return this._httpClient.get<any>('/package/allpackages');
+  }
+
 }

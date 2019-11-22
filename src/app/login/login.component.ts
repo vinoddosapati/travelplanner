@@ -24,7 +24,19 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/signup']);
       } else {
         console.log('---' + data.name);
-        this.router.navigate(['/details']);
+        // tslint:disable-next-line: triple-equals
+        localStorage.setItem('user', JSON.stringify(data));
+        console.log('session values ' + localStorage.getItem('user'));
+        if(data.usertype == 'USER') {
+          this.router.navigate(['/details']);
+        // tslint:disable-next-line: triple-equals
+        } else if (data.usertype == 'AGENT') {
+          this.router.navigate(['/agentsdetails']);
+        // tslint:disable-next-line: triple-equals
+        } else if (data.usertype == 'ADMIN') {
+          this.router.navigate(['/dashboard']);
+        }
+
       }
     });
   }

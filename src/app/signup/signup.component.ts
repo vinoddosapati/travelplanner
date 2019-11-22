@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataintegrateService } from '../dataintegrate.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
   temp: any;
 
-  constructor(private dataService: DataintegrateService) { }
+  constructor(private router: Router, private dataService: DataintegrateService) { }
 
   ngOnInit() {
   }
@@ -20,8 +21,14 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(it: NgForm) {
-    this.dataService.createUser(it).subscribe(data => { this.temp = data.status; });
-    console.log('temp value ' + this.temp);
+    this.dataService.createUser(it).subscribe(data => {
+      console.log('signup user ' + data);
+      if (data == null) {
+        this.router.navigate(['/signup']);
+      } else {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
 }

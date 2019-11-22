@@ -3,12 +3,13 @@ import { DataintegrateService } from '../dataintegrate.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
+  usersList: any;
   constructor(private router: Router, private dataservice: DataintegrateService) { }
 
   ngOnInit() {
@@ -17,6 +18,7 @@ export class DetailsComponent implements OnInit {
     //   this.router.navigate(['/']);
     // }
     this.dataservice.getAllUsers().subscribe(data => {
+      this.usersList = data;
       console.log('all users ' + JSON.stringify(data));
     });
   }

@@ -1,0 +1,35 @@
+<section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+          <div class="row">
+            <div class="col text-center">
+              <h1>Create Package</h1>
+            </div>
+          </div>
+          <form #it="ngForm" (ngSubmit)="onSubmit(it)" novalidate>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input ngModel name ="packageName" #packageName="ngModel" type="text" required class="form-control" placeholder="Package Name">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input ngModel name="source" #source="ngModel" required type="text" class="form-control" placeholder="Source">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input ngModel name="dest" #dest="ngModel" required type="text" class="form-control" placeholder="Destination">
+            </div>
+          </div>
+          <div class="row justify-content-start mt-4">
+            <div class="col">
+              <button class="btn btn-primary mt-4">Create Package</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </section>

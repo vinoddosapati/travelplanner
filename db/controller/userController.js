@@ -36,7 +36,7 @@ router.get('/userUpdate', (req, res) => {
 function getUserInfo(req, res) {
   console.log("asd "+ JSON.stringify(req.query));
   console.log("query" + req.originalUrl);
-  userSchema1.findOne({"name":req.query.userName,"password":req.query.password}, function(err, user) {
+  userSchema1.findOne({"email":req.query.userName,"password":req.query.password}, function(err, user) {
     if (err) {throw err;}
     // object of the user
     console.log('user info ' + user);
@@ -62,12 +62,18 @@ function insertUser(req, res) {
   user.name = req.query.firstName;
   user.email = req.query.Email;
   user.password = req.query.pswd;
+  user.usertype = 'USER';
   user.save(function(err, guest) {
+    console.log('guest ' + guest);
     if(err) {
+      res.send(guest);
+      console.log('guest1 ' + guest);
       return console.error('Error during document inseert ' + err);
     }else {
-      res.json({ status: 200 });
+      console.log('guest2 ' + guest);
+      //res.json({ status: 200 });
     }
+    res.send(guest);
   });
 }
 

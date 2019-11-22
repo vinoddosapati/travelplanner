@@ -9,6 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DetailsComponent } from './details/details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PackageComponent } from './package/package.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MenudropComponent } from './menudrop/menudrop.component';
+import { CreatePackageComponent } from './create-package/create-package.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     LoginComponent,
     SignupComponent,
-    DetailsComponent
+    DetailsComponent,
+    PackageComponent,
+    DashboardComponent,
+    MenudropComponent,
+    CreatePackageComponent
   ],
   imports: [
     BrowserModule,
