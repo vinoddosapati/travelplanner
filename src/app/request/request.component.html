@@ -1,0 +1,25 @@
+<h2>Requesting Users to Agents</h2>
+
+<div *ngFor="let reqUser of reqUsers">
+<div class="card">
+  <div class="card-header text-center">
+    <h5>{{reqUser.name}}</h5>
+  </div>
+  <div class="card-body">
+    <img class="img-fluid rounded float-left" src="{{reqUser.pic}}" alt="Card image cap">
+    <div class="text-center">
+      <h5 class="card-title">Email: </h5>
+      <p>{{reqUser.email}}</p>
+      <h5 class="card-title">Google ID: </h5>
+      <p>{{reqUser.id}}</p>
+      <h5 class="card-title">Type: </h5>
+      <p>{{reqUser.usertype}}</p>
+      <a routerLink="/user/request" routerLinkActive="active" (click)="reqApprove(reqUser)" class="btn btn-success">Approve</a>
+      <a routerLink="/user/request" routerLinkActive="active" (click)="deletereqUser(reqUser)" class="btn btn-danger">Decline</a>
+    </div>
+  </div>
+  <div class="card-footer text-muted text-center">
+    2 days ago
+  </div>
+</div>
+</div>

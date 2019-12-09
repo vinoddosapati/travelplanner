@@ -17,10 +17,18 @@ export class DashboardComponent implements OnInit {
     // if (localStorage.getItem('user') == null || localStorage.length <= 0) {
     //   this.router.navigate(['/']);
     // }
-    this.dataservice.getAllUsers().subscribe(data => {
-      this.usersList = data;
-      console.log('all users ' + JSON.stringify(data));
-    });
+    console.log('package session ' + JSON.parse((localStorage.getItem('user'))).usertype + localStorage.getItem('user'));
+    if (localStorage.getItem('user') == null || localStorage.length <= 0) {
+      this.router.navigate(['/']);
+    // tslint:disable-next-line: triple-equals
+    } else if (JSON.parse((localStorage.getItem('user'))).usertype != 'ADMIN') {
+      this.router.navigate(['/']);
+    } else {
+      this.dataservice.getAllUsers().subscribe(data => {
+        this.usersList = data;
+        console.log('all requesting users ' + JSON.stringify(data));
+      });
+    }
   }
 
 }

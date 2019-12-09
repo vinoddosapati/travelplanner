@@ -1,0 +1,101 @@
+<h2>Booked packages</h2>
+<div class="card-deck" #book>
+  <div *ngFor="let package of packagesList">
+    <div class="card" style="width: 20rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title">Package Name : {{ package.packageName }}</h5>
+        <p class="card-text">ID : {{ package._id }}</p>
+        <p class="card-text">Source : {{ package.source }}</p>
+        <p class="card-text">Destination : {{ package.dest }}</p>
+        <p class="card-text">Created By/On : {{ package.createdOn | date}}</p>
+        <p class="card-text">Uploaded On : {{ package.updatedOn | date}}</p>
+        <button type="button" class="btn btn-primary" (click)="profilePackage(package)" data-toggle="modal"
+          data-target="#exampleModalCenter">
+          View Full Package
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" #exampleModalCenter tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width:400px">
+          <div class="card-header text-center">
+            <h5>User Information: </h5>
+          </div>
+          <img class="card-img-top" src={{userInfo.pic}} alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">{{userInfo.name}}</h4>
+            <p class="card-text">{{userInfo.email}}</p>
+          </div>
+        </div>
+        <div *ngIf="isCurrentPackage()">
+        <div class="card" style="width:400px">
+          <div class="card-header text-center">
+            <h5>Selected Trip: </h5>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Package Name: {{ currentPackage.packageName }}</h4>
+            <p class="card-text">Source : {{ currentPackage.source }}</p>
+            <p class="card-text">Destination : {{ currentPackage.dest }}</p>
+          </div>
+        </div>
+
+        <div class="card" style="width:400px">
+            <div class="card-header text-center">
+              <h5>Depart Flight Info: </h5>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">From : {{ currentPackage.flight.OutboundLeg.OriginId }}</h4>
+              <p class="card-text">To : {{ currentPackage.flight.OutboundLeg.DestinationId }}</p>
+              <p class="card-text">Airlines : {{currentPackage.flight.OutboundLeg.CarrierIds}} </p>
+              <p class="card-text">Price : {{currentPackage.flight.MinPrice }} </p>
+              <!-- <div *ngFor="let flightname of currentPackage.flight.OutboundLeg.CarrierIds">
+                <p>flightname</p>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="card" style="width:400px">
+              <div class="card-header text-center">
+                <h5>Return Flight Info: </h5>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">From : {{ currentPackage.returnflight.OutboundLeg.OriginId }}</h4>
+                <p class="card-text">To : {{ currentPackage.returnflight.OutboundLeg.DestinationId }}</p>
+                <p class="card-text">Airlines : {{currentPackage.returnflight.OutboundLeg.CarrierIds}} </p>
+                <p class="card-text">Price : {{currentPackage.returnflight.MinPrice }} </p>
+              </div>
+            </div>
+
+            <div class="card" style="width:400px">
+                <div class="card-header text-center">
+                  <h5>Hotel Info: </h5>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Hotel Name : {{ currentPackage.hotel.hotelname }}</h4>
+                  <p class="card-text">Rating : {{ currentPackage.hotel.rating }}</p>
+                  <p class="card-text">Address : {{currentPackage.hotel.hoteladdress }} </p>
+                </div>
+              </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary" (click)="downloadPDF()">Save to pdf</button> -->
+      </div>
+    </div>
+  </div>
+</div>

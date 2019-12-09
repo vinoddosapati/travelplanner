@@ -14,6 +14,18 @@ export class SignupComponent implements OnInit {
   constructor(private router: Router, private dataService: DataintegrateService) { }
 
   ngOnInit() {
+    // if (localStorage.length >= 0 && localStorage.getItem('user')) {
+    //   // tslint:disable-next-line: triple-equals
+    //   if (JSON.parse((localStorage.getItem('user'))).usertype == 'USER') {
+    //     this.router.navigate(['/details']);
+    //   // tslint:disable-next-line: triple-equals
+    //   } else if (JSON.parse((localStorage.getItem('user'))).usertype == 'AGENT') {
+    //     this.router.navigate(['/agentsdetails']);
+    //   // tslint:disable-next-line: triple-equals
+    //   } else if (JSON.parse((localStorage.getItem('user'))).usertype == 'ADMIN') {
+    //     this.router.navigate(['/dashboard']);
+    //   }
+    // }
   }
 
   signUp(Email: any) {

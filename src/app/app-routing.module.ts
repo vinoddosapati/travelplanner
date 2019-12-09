@@ -6,6 +6,10 @@ import { DetailsComponent } from './details/details.component';
 import { PackageComponent } from './package/package.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreatePackageComponent } from './create-package/create-package.component';
+import { RequestComponent } from './request/request.component';
+import { ViewtripComponent } from './viewtrip/viewtrip.component';
+import { BookedpackageComponent } from './bookedpackage/bookedpackage.component';
+import { ViewCreatedPackageComponent } from './view-created-package/view-created-package.component';
 
 
 const routes: Routes = [
@@ -13,9 +17,12 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'details', component: DetailsComponent},
   {path: 'agentsdetails', component: PackageComponent},
-  {path: 'dashboard', component: DashboardComponent},
   {path: 'package/create', component: CreatePackageComponent},
-  {path: 'package/viewAll', component: PackageComponent}
+  {path: 'package/viewAll', component: PackageComponent},
+  {path: 'user/request', component: RequestComponent},
+  {path: 'package/booked', component: BookedpackageComponent},
+  {path: 'package/viewcreated', component: ViewCreatedPackageComponent},
+  {path: 'view/ticket', component: ViewtripComponent}
 ];
 
 @NgModule({

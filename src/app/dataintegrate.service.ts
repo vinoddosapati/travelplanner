@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { FnParam } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,21 @@ export class DataintegrateService {
     return this._httpClient.get<any>('/user/userSearch', {params: it.value});
   }
 
+  login_google(it: any) {
+    console.log('login ' + it);
+    return this._httpClient.get<any>('/user/userSearch', {params: it});
+  }
+
+  signup_google(it: any) {
+    console.log('signup ' + it);
+    return this._httpClient.post<any>('/user/userCreate', '' , {params: it});
+  }
+
+  // request
   getAllUsers() {
     return this._httpClient.get<any>('/user/allusers');
   }
+
 
   createPackage(it: any) {
     console.log('dataservice ' + JSON.stringify(it));
@@ -33,6 +46,47 @@ export class DataintegrateService {
 
   getAllPackages() {
     return this._httpClient.get<any>('/package/allpackages');
+  }
+
+  generateRequest() {
+    return this._httpClient.post<any>('/request/generate', '', {params: JSON.parse((localStorage.getItem('user')))});
+  }
+
+  getRequests() {
+    return this._httpClient.get<any>('/request/getrequests');
+  }
+
+  updateUserType(objid: any) {
+    console.log('update user req in user with ' + objid);
+    return this._httpClient.put<any>('user/userreqUpdate', '', {params: objid}).subscribe(updatedUser => {
+      console.log('after update user info: ' + updatedUser);
+    });
+  }
+
+  deletereqUser(id: any) {
+    console.log('delete user reqed user with :' + id);
+    return this._httpClient.delete<any>('request/deleteReq', {params: id}).subscribe(deletereq => {
+      console.log('deleted user info: ' + deletereq);
+    });
+  }
+
+  updatePackageUserID(jsonObj: any) {
+    return this._httpClient.put<any>('/package/updateUserID', '', {params: jsonObj});
+  }
+
+  getBookedPackages(userId: any) {
+    const userID = {userid: userId};
+    return this._httpClient.get<any>('/package/getBooked', {params: userID});
+  }
+
+  getCreatedPackages(userId: any) {
+    const userID = {userid: userId};
+    return this._httpClient.get<any>('/package/getCreated', {params: userID});
+  }
+
+  deletePackage(packageID: any) {
+    const packID = {packid: packageID};
+    return this._httpClient.delete<any>('package/deletebyid', {params: packID});
   }
 
 }

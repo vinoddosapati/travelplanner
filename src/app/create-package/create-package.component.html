@@ -1,35 +1,204 @@
 <section>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-          <div class="row">
-            <div class="col text-center">
-              <h1>Create Package</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+        <div class="row">
+          <div class="col text-center">
+            <h1>Create Package</h1>
+          </div>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+              aria-selected="true">Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="airport-tab" data-toggle="tab" href="#airport" role="tab" aria-controls="airport"
+              aria-selected="false">Airport</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+              aria-selected="false">Flights</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="return-tab" data-toggle="tab" href="#return" role="tab" aria-controls="return"
+                aria-selected="false">Return Flights</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+              aria-selected="false">Hotels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="send-tab" data-toggle="tab" href="#send" role="tab" aria-controls="send"
+              aria-selected="false">Submit</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <form #it="ngForm" (ngSubmit)="onSubmit(it)" novalidate>
+              <div class="row align-items-center">
+                <div class="col mt-4">
+                  <input ngModel name="packageName" #packageName="ngModel" type="text" required class="form-control"
+                    placeholder="Package Name">
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input ngModel name="source" #source="ngModel" required type="text" class="form-control"
+                    placeholder="Source">
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input ngModel name="dest" #dest="ngModel" required type="text" class="form-control"
+                    placeholder="Destination">
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input ngModel name="travelstartdate" #travelstartdate="ngModel" required type="text" bsDatepicker
+                    class="form-control" placeholder="Travel Start Date">
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input ngModel name="travelreturndate" #travelreturndate="ngModel" required type="text" bsDatepicker
+                    class="form-control" placeholder="Travel Return Date">
+                </div>
+              </div>
+              <button class="btn btn-primary mt-4">Generate</button>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="airport" role="tabpanel" aria-labelledby="airport-tab">Get Source Airports
+            <div *ngFor="let airport of sourceairports">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">{{airport.PlaceName}}, {{airport.CountryName}}  ({{airport.PlaceId}})</p>
+                  <p class="btn btn-primary" (click)="selectSourceAirport(airport)">Choose {{airport.PlaceId}}</p>
+                </div>
+              </div>
+            </div>
+
+            Destination Airports:
+            <div *ngFor="let airport of destairports">
+                <div class="card">
+                  <div class="card-body">
+                    <p class="card-title">{{airport.PlaceName}}, {{airport.CountryName}}  ({{airport.PlaceId}})</p>
+                    <p class="btn btn-primary" (click)="selectDestAirport(airport)">Choose {{airport.PlaceId}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Get Flights
+
+            <div *ngFor="let flight of Quotes">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-text">From {{ getPlaceName(flight.OutboundLeg.OriginId) }} to
+                    {{ getPlaceName(flight.OutboundLeg.DestinationId) }} </p>
+                    <p class="card-text">Airlines: {{getFlightName(flight.OutboundLeg.CarrierIds)}}</p>
+                  <p class="card-text">Price {{ flight.MinPrice }}</p>
+                  <p class="btn btn-primary" (click)="filghtBook(flight)">Book</p>
+                </div>
+              </div>
             </div>
           </div>
-          <form #it="ngForm" (ngSubmit)="onSubmit(it)" novalidate>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input ngModel name ="packageName" #packageName="ngModel" type="text" required class="form-control" placeholder="Package Name">
+          <div class="tab-pane fade" id="return" role="tabpanel" aria-labelledby="return-tab">Get return Flights
+
+              <div *ngFor="let flight of returnQuotes">
+                <div class="card">
+                  <div class="card-body">
+                    <p class="card-text">From {{ getReturnPlaceName(flight.OutboundLeg.OriginId) }} to
+                      {{ getReturnPlaceName(flight.OutboundLeg.DestinationId) }} </p>
+                    <p class="card-text">Airlines: {{getReturnFlightName(flight.OutboundLeg.CarrierIds)}}</p>
+                    <p class="card-text">Price {{ flight.MinPrice }}</p>
+                    <p class="btn btn-primary" (click)="returnfilghtBook(flight)">Book</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Get Hotels
+            <div *ngFor="let hotel of hotels">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-text">Hotel Name:  {{ hotel.name }}</p>
+                  <p class="card-text">Rating: {{ hotel.rating }}</p>
+                  <p class="card-text">Address:  {{ hotel.formatted_address }}</p>
+                  <p class="btn btn-primary" (click)="selectHotel(hotel)">Book</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row align-items-center mt-4">
-            <div class="col">
-              <input ngModel name="source" #source="ngModel" required type="text" class="form-control" placeholder="Source">
-            </div>
+          <div class="tab-pane fade" id="send" role="tabpanel" aria-labelledby="send-tab">Get Hotels
+            <button type="btn-primary" (click)="submitPackage()">Create Package</button>
           </div>
-          <div class="row align-items-center mt-4">
-            <div class="col">
-              <input ngModel name="dest" #dest="ngModel" required type="text" class="form-control" placeholder="Destination">
-            </div>
-          </div>
-          <div class="row justify-content-start mt-4">
-            <div class="col">
-              <button class="btn btn-primary mt-4">Create Package</button>
-            </div>
-          </div>
-        </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!--Flights Modal -->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="ModalLabel1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel1">Flights</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let flight of Quotes">
+          <div class="radio">
+            <label><input type="radio" name="{{flight.QuoteId}}">From {{ flight.OutboundLeg.OriginId }} to
+              {{ flight.OutboundLeg.DestinationId }} Price {{ flight.MinPrice }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Hotel Modal -->
+<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel2">Hotels</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div> -->

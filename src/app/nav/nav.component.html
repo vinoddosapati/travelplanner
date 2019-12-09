@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -8,9 +9,61 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      <div *ngIf="sendAgentType()">
+        <li class="nav-item dropdown" id="agent">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Package
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/package/create" routerLinkActive="active">Create Package</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/package/viewcreated" routerLinkActive="active">View Created Packages</a>
+          </div>
+
+        </li>
+      </div>
+      <div *ngIf="sendUserType()">
+        <li class="nav-item dropdown" id="user">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Package
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/package/booked" routerLinkActive="active">Booked Package</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/package/viewAll" routerLinkActive="active">View Available Packages</a>
+          </div>
+        </li>
+      </div>
+      <div *ngIf="sendUserType()">
+        <li class="nav-item dropdown" id="user">
+          <a (click)="reqAgent()" class="btn btn-danger">Convert to Agent</a>
+        </li>
+      </div>
+      <div *ngIf="sendAdminType()">
+        <li class="nav-item dropdown" id="admin">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dashboard
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/user/request" routerLinkActive="active">Requests</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/package/viewAll" routerLinkActive="active">View Packages</a>
+          </div>
+        </li>
+      </div>
+      <div *ngIf="!isLoggedIn()">
+      <li>
+          <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">Google Login<span class="fa fa-google"></span></button>
       </li>
+    </div>
+    <div *ngIf= "isLoggedIn()">
+      <li>
+          <a class="nav-link" (click)="signOut()" >Logout<span class="sr-only">(current)</span></a>
+      </li>
+    </div>
     </ul>
   </div>
 </nav>

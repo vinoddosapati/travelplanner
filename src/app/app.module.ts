@@ -13,6 +13,26 @@ import { PackageComponent } from './package/package.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenudropComponent } from './menudrop/menudrop.component';
 import { CreatePackageComponent } from './create-package/create-package.component';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { RequestComponent } from './request/request.component';
+import { ViewtripComponent } from './viewtrip/viewtrip.component';
+import { BookedpackageComponent } from './bookedpackage/bookedpackage.component';
+import { ViewCreatedPackageComponent } from './view-created-package/view-created-package.component';
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('279742459867-96eiak7ttri8660i9np3ps0demb3at0f.apps.googleusercontent.com')
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -24,15 +44,26 @@ import { CreatePackageComponent } from './create-package/create-package.componen
     PackageComponent,
     DashboardComponent,
     MenudropComponent,
-    CreatePackageComponent
+    CreatePackageComponent,
+    RequestComponent,
+    ViewtripComponent,
+    BookedpackageComponent,
+    ViewCreatedPackageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
