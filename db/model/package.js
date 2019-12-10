@@ -13,8 +13,8 @@ var package = new mongoose.Schema({
   uploadedBy: { type: String, required: true },
   source: { type: String, required: true },
   dest: { type: String, required: true },
-  createdOn: { type: Date, default: Date.now},
-  updatedOn: { type: Date, default: Date.now},
+  from: { type: Date, required: true},
+  till: { type: Date, required: true},
   bookings: [{
     userid: {type: Object},
     username: {type: String},

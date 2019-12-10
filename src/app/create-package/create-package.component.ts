@@ -148,6 +148,7 @@ export class CreatePackageComponent implements OnInit {
     console.log('Selected values: ' + this.packageDetails);
     this.flightSelected = this.flightDetailsModify(flightBooked);
     console.log('Booked flight: ' + JSON.stringify(flightBooked));
+    // tslint:disable-next-line: triple-equals
     if (this.returnflight == null || this.returnflight == undefined) {
 
     } else {
@@ -160,6 +161,7 @@ export class CreatePackageComponent implements OnInit {
   returnfilghtBook(flightBooked: any) {
     this.returnflight = this.returnflightDetailsModify(flightBooked);
     console.log('return flight ' + JSON.stringify(this.returnflight));
+    // tslint:disable-next-line: triple-equals
     if (this.flightSelected == null || this.flightSelected == undefined) {
 
     } else {
@@ -256,7 +258,7 @@ export class CreatePackageComponent implements OnInit {
       } else {
         console.log('packages upfdated ' + data);
         localStorage.setItem('package', data._id);
-        this.router.navigate(['/package/viewAll']);
+        this.router.navigate(['/view/ticket']);
       }
     });
   } else {
@@ -297,6 +299,7 @@ export class CreatePackageComponent implements OnInit {
   selectSourceAirport(airport: any) {
     console.log(airport + 'choosen source');
     this.sourceairport = airport.PlaceId;
+    // tslint:disable-next-line: triple-equals
     if (this.destairport == null || this.destairport == undefined) {
       console.log('need to select dest airport');
     } else {
@@ -308,6 +311,7 @@ export class CreatePackageComponent implements OnInit {
   selectDestAirport(airport: any) {
     console.log(airport + 'choosen source');
     this.destairport = airport.PlaceId;
+    // tslint:disable-next-line: triple-equals
     if (this.sourceairport == null || this.sourceairport == undefined) {
       console.log('need to select source airport');
     } else {

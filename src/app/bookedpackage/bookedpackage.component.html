@@ -7,8 +7,8 @@
         <p class="card-text">ID : {{ package._id }}</p>
         <p class="card-text">Source : {{ package.source }}</p>
         <p class="card-text">Destination : {{ package.dest }}</p>
-        <p class="card-text">Created By/On : {{ package.createdOn | date}}</p>
-        <p class="card-text">Uploaded On : {{ package.updatedOn | date}}</p>
+        <p class="card-text">From : {{ package.from | date}}</p>
+        <p class="card-text">Till : {{ package.till | date}}</p>
         <button type="button" class="btn btn-primary" (click)="profilePackage(package)" data-toggle="modal"
           data-target="#exampleModalCenter">
           View Full Package
@@ -49,6 +49,8 @@
             <h4 class="card-title">Package Name: {{ currentPackage.packageName }}</h4>
             <p class="card-text">Source : {{ currentPackage.source }}</p>
             <p class="card-text">Destination : {{ currentPackage.dest }}</p>
+            <p class="card-text">From : {{ currentPackage.from | date}}</p>
+            <p class="card-text">Till : {{ currentPackage.till | date}}</p>
           </div>
         </div>
 

@@ -10,6 +10,9 @@ import { RequestComponent } from './request/request.component';
 import { ViewtripComponent } from './viewtrip/viewtrip.component';
 import { BookedpackageComponent } from './bookedpackage/bookedpackage.component';
 import { ViewCreatedPackageComponent } from './view-created-package/view-created-package.component';
+import { CreatespecialholidayComponent } from './createspecialholiday/createspecialholiday.component';
+import { SpecialholidayviewComponent } from './specialholidayview/specialholidayview.component';
+import { UserPacketCreateComponent } from './user-packet-create/user-packet-create.component';
 
 
 const routes: Routes = [
@@ -22,7 +25,10 @@ const routes: Routes = [
   {path: 'user/request', component: RequestComponent},
   {path: 'package/booked', component: BookedpackageComponent},
   {path: 'package/viewcreated', component: ViewCreatedPackageComponent},
-  {path: 'view/ticket', component: ViewtripComponent}
+  {path: 'view/ticket', component: ViewtripComponent},
+  {path: 'holiday/create', component: CreatespecialholidayComponent},
+  {path: 'holiday/view', component: SpecialholidayviewComponent},
+  {path: 'user/package/create', component: UserPacketCreateComponent}
 ];
 
 @NgModule({

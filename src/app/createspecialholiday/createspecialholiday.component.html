@@ -1,0 +1,21 @@
+<form #it="ngForm" (ngSubmit)="onSubmit(it)" novalidate>
+    <div class="row align-items-center">
+      <div class="col mt-4">
+        <input ngModel name="packageName" #packageName="ngModel" type="text" required class="form-control"
+          placeholder="Holiday Package Name">
+      </div>
+    </div>
+    <div class="row align-items-center mt-4">
+      <div class="col">
+        <input ngModel name="travelstartdate" #travelstartdate="ngModel" required type="text" bsDatepicker
+          class="form-control" placeholder="Travel Start Date">
+      </div>
+    </div>
+    <div class="row align-items-center mt-4">
+      <div class="col">
+        <input ngModel name="travelreturndate" #travelreturndate="ngModel" required type="text" bsDatepicker
+          class="form-control" placeholder="Travel Return Date">
+      </div>
+    </div>
+    <button class="btn btn-primary mt-4">Add Holiday</button>
+  </form>

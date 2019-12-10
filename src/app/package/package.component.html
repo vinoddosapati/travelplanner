@@ -7,8 +7,8 @@
             <p class="card-text">ID : {{ package._id }}</p>
             <p class="card-text">Source : {{ package.source }}</p>
             <p class="card-text">Destination : {{ package.dest }}</p>
-            <p class="card-text">Created By/On : {{ package.createdOn | date}}</p>
-            <p class="card-text">Uploaded On : {{ package.updatedOn | date}}</p>
+            <p class="card-text">From : {{ package.from | date}}</p>
+            <p class="card-text">Till : {{ package.till | date}}</p>
             <div *ngIf="!usertype()"><a (click)="bookpackage(package)" class="btn btn-primary">Book</a></div>
             <div *ngIf="usertype()"><a (click)="deletepackage(package)" class="btn btn-danger">Delete Package</a></div>
         </div>

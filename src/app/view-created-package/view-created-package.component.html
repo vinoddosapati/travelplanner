@@ -4,9 +4,10 @@
     <div class="card" style="width: 20rem;">
       <div class="card-body text-center">
         <h5 class="card-title">Package Name : {{ package.packageName }}</h5>
-        <p class="card-text">ID : {{ package._id }}</p>
         <p class="card-text">Source : {{ package.source }}</p>
         <p class="card-text">Destination : {{ package.dest }}</p>
+        <p class="card-text">From : {{ package.from }}</p>
+        <p class="card-text">Till : {{ package.till }}</p>
         <button type="button" (click)="viewPackage(package)" class="btn btn-primary" data-toggle="modal"
           data-target="#exampleModalCenter">
           View Full Itinerary
@@ -36,6 +37,8 @@
             <h4 class="card-title">{{ selectedPackage.packageName }}</h4>
             <p class="card-text">Source : {{ selectedPackage.source }}</p>
             <p class="card-text">Destination : {{ selectedPackage.dest }}</p>
+            <p class="card-text">From : {{ selectedPackage.from }}</p>
+            <p class="card-text">Till : {{ selectedPackage.till }}</p>
           </div>
         </div>
         <div class="card" style="width:400px">

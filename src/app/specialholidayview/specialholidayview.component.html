@@ -1,0 +1,12 @@
+<div *ngFor="let holiday of holidaysList">
+  <div class="card" style="width:400px">
+    <div class="card-header text-center">
+      <h5>Holiday Name: {{ holiday.name }} </h5>
+    </div>
+    <div class="card-body">
+      <p class="card-title">From Date: {{ holiday.from }}</p>
+      <p class="card-text">To Date : {{ holiday.till }}</p>
+      <button class="btn btn-danger" *ngIf="adminType()" (click)="deleteHoliday(holiday)">Delete Holiday</button>
+    </div>
+  </div>
+</div>

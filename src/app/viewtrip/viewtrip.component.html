@@ -1,24 +1,47 @@
-
-<div class="card" style="width:400px">
+<div #content>
+<div class="card" style="width:400px" *ngIf="isPackageThere()">
   <div class="card-header text-center">
-    <h5>User Information: </h5>
+    <h5>Package Details: </h5>
   </div>
-  <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
   <div class="card-body">
-    <h4 class="card-title">John Doe</h4>
-    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+    <h4 class="card-title">{{ selectedPackage.packageName }}</h4>
+    <p class="card-text">Source : {{ selectedPackage.source }}</p>
+    <p class="card-text">Destination : {{ selectedPackage.dest }}</p>
+    <p class="card-text">From : {{ selectedPackage.from }}</p>
+    <p class="card-text">Till : {{ selectedPackage.till }}</p>
   </div>
 </div>
-
-
 <div class="card" style="width:400px">
   <div class="card-header text-center">
-    <h5>Selected Trip: </h5>
+    <h5>Departure Flight: </h5>
   </div>
-  <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
   <div class="card-body">
-    <h4 class="card-title">John Doe</h4>
-    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+    <h4 class="card-title">Airlines: {{ selectedPackage.flight.OutboundLeg.CarrierIds }}</h4>
+    <p class="card-text">From : {{ selectedPackage.flight.OutboundLeg.OriginId }}</p>
+    <p class="card-text">To : {{ selectedPackage.flight.OutboundLeg.DestinationId }}</p>
+    <p class="card-text">Departs at : {{ selectedPackage.flight.OutboundLeg.DepartureDate }}</p>
   </div>
 </div>
-
+<div class="card" style="width:400px">
+  <div class="card-header text-center">
+    <h5>Return Flight: </h5>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Airlines: {{ selectedPackage.returnflight.OutboundLeg.CarrierIds }}</h4>
+    <p class="card-text">From : {{ selectedPackage.returnflight.OutboundLeg.OriginId }}</p>
+    <p class="card-text">To : {{ selectedPackage.returnflight.OutboundLeg.DestinationId }}</p>
+    <p class="card-text">Departs at : {{ selectedPackage.returnflight.OutboundLeg.DepartureDate }}</p>
+  </div>
+</div>
+<div class="card" style="width:400px">
+  <div class="card-header text-center">
+    <h5>Hotel: </h5>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Hotel Name: {{ selectedPackage.hotel.hotelname }}</h4>
+    <p class="card-text">Rating : {{ selectedPackage.hotel.rating }}</p>
+    <p class="card-text">Address : {{ selectedPackage.hotel.hoteladdress }}</p>
+  </div>
+</div>
+<button class="btn btn-primary" (click)="downloadPDF()">Save as PDF</button>
+</div>

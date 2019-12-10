@@ -44,6 +44,11 @@ export class DataintegrateService {
     return this._httpClient.post<any>('/package/packagecreate', '', {params: it});
   }
 
+  // createUserPackage(it: any) {
+  //   console.log('dataservice ' + JSON.stringify(it));
+  //   return this._httpClient.post<any>('/userpackage/pckcreate', '', {params: it});
+  // }
+
   getAllPackages() {
     return this._httpClient.get<any>('/package/allpackages');
   }
@@ -87,6 +92,30 @@ export class DataintegrateService {
   deletePackage(packageID: any) {
     const packID = {packid: packageID};
     return this._httpClient.delete<any>('package/deletebyid', {params: packID});
+  }
+
+  getPackageByPackageID(packageID: any) {
+    const packID = {packid: packageID};
+    return this._httpClient.get<any>('package/packagebypackid', {params: packID});
+  }
+
+  // getUserPackageByPackageID(packageID: any) {
+  //   const packID = {packid: packageID};
+  //   return this._httpClient.get<any>('userpackage/packagebypackid', {params: packID});
+  // }
+
+  addspecialPackage(specialholiday: any) {
+    console.log('data holiday : ' + JSON.stringify(specialholiday));
+    return this._httpClient.post<any>('holiday/addspecial', '', {params: specialholiday});
+  }
+
+  getHolidays() {
+    return this._httpClient.get<any>('holiday/getAllSpecial');
+  }
+
+  deleteHoliday(holidayId: any) {
+    const holiID = {holidayid: holidayId};
+    return this._httpClient.delete<any>('holiday/deleteHolidayByID', {params: holiID});
   }
 
 }

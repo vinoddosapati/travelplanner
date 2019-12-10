@@ -39,7 +39,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h2>Booked packages</h2>\n<div class=\"card-deck\" #book>\n  <div *ngFor=\"let package of packagesList\">\n    <div class=\"card\" style=\"width: 20rem;\">\n      <div class=\"card-body text-center\">\n        <h5 class=\"card-title\">Package Name : {{ package.packageName }}</h5>\n        <p class=\"card-text\">ID : {{ package._id }}</p>\n        <p class=\"card-text\">Source : {{ package.source }}</p>\n        <p class=\"card-text\">Destination : {{ package.dest }}</p>\n        <p class=\"card-text\">Created By/On : {{ package.createdOn | date}}</p>\n        <p class=\"card-text\">Uploaded On : {{ package.updatedOn | date}}</p>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"profilePackage(package)\" data-toggle=\"modal\"\n          data-target=\"#exampleModalCenter\">\n          View Full Package\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Modal -->\n<div class=\"modal fade\" id=\"exampleModalCenter\" #exampleModalCenter tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Modal title</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>User Information: </h5>\n          </div>\n          <img class=\"card-img-top\" src={{userInfo.pic}} alt=\"Card image\" style=\"width:100%\">\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">{{userInfo.name}}</h4>\n            <p class=\"card-text\">{{userInfo.email}}</p>\n          </div>\n        </div>\n        <div *ngIf=\"isCurrentPackage()\">\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Selected Trip: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Package Name: {{ currentPackage.packageName }}</h4>\n            <p class=\"card-text\">Source : {{ currentPackage.source }}</p>\n            <p class=\"card-text\">Destination : {{ currentPackage.dest }}</p>\n          </div>\n        </div>\n\n        <div class=\"card\" style=\"width:400px\">\n            <div class=\"card-header text-center\">\n              <h5>Depart Flight Info: </h5>\n            </div>\n            <div class=\"card-body\">\n              <h4 class=\"card-title\">From : {{ currentPackage.flight.OutboundLeg.OriginId }}</h4>\n              <p class=\"card-text\">To : {{ currentPackage.flight.OutboundLeg.DestinationId }}</p>\n              <p class=\"card-text\">Airlines : {{currentPackage.flight.OutboundLeg.CarrierIds}} </p>\n              <p class=\"card-text\">Price : {{currentPackage.flight.MinPrice }} </p>\n              <!-- <div *ngFor=\"let flightname of currentPackage.flight.OutboundLeg.CarrierIds\">\n                <p>flightname</p>\n              </div> -->\n            </div>\n          </div>\n\n          <div class=\"card\" style=\"width:400px\">\n              <div class=\"card-header text-center\">\n                <h5>Return Flight Info: </h5>\n              </div>\n              <div class=\"card-body\">\n                <h4 class=\"card-title\">From : {{ currentPackage.returnflight.OutboundLeg.OriginId }}</h4>\n                <p class=\"card-text\">To : {{ currentPackage.returnflight.OutboundLeg.DestinationId }}</p>\n                <p class=\"card-text\">Airlines : {{currentPackage.returnflight.OutboundLeg.CarrierIds}} </p>\n                <p class=\"card-text\">Price : {{currentPackage.returnflight.MinPrice }} </p>\n              </div>\n            </div>\n\n            <div class=\"card\" style=\"width:400px\">\n                <div class=\"card-header text-center\">\n                  <h5>Hotel Info: </h5>\n                </div>\n                <div class=\"card-body\">\n                  <h4 class=\"card-title\">Hotel Name : {{ currentPackage.hotel.hotelname }}</h4>\n                  <p class=\"card-text\">Rating : {{ currentPackage.hotel.rating }}</p>\n                  <p class=\"card-text\">Address : {{currentPackage.hotel.hoteladdress }} </p>\n                </div>\n              </div>\n        </div>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n        <!-- <button type=\"button\" class=\"btn btn-primary\" (click)=\"downloadPDF()\">Save to pdf</button> -->\n      </div>\n    </div>\n  </div>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h2>Booked packages</h2>\n<div class=\"card-deck\" #book>\n  <div *ngFor=\"let package of packagesList\">\n    <div class=\"card\" style=\"width: 20rem;\">\n      <div class=\"card-body text-center\">\n        <h5 class=\"card-title\">Package Name : {{ package.packageName }}</h5>\n        <p class=\"card-text\">ID : {{ package._id }}</p>\n        <p class=\"card-text\">Source : {{ package.source }}</p>\n        <p class=\"card-text\">Destination : {{ package.dest }}</p>\n        <p class=\"card-text\">From : {{ package.from | date}}</p>\n        <p class=\"card-text\">Till : {{ package.till | date}}</p>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"profilePackage(package)\" data-toggle=\"modal\"\n          data-target=\"#exampleModalCenter\">\n          View Full Package\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Modal -->\n<div class=\"modal fade\" id=\"exampleModalCenter\" #exampleModalCenter tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Modal title</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>User Information: </h5>\n          </div>\n          <img class=\"card-img-top\" src={{userInfo.pic}} alt=\"Card image\" style=\"width:100%\">\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">{{userInfo.name}}</h4>\n            <p class=\"card-text\">{{userInfo.email}}</p>\n          </div>\n        </div>\n        <div *ngIf=\"isCurrentPackage()\">\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Selected Trip: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Package Name: {{ currentPackage.packageName }}</h4>\n            <p class=\"card-text\">Source : {{ currentPackage.source }}</p>\n            <p class=\"card-text\">Destination : {{ currentPackage.dest }}</p>\n            <p class=\"card-text\">From : {{ currentPackage.from | date}}</p>\n            <p class=\"card-text\">Till : {{ currentPackage.till | date}}</p>\n          </div>\n        </div>\n\n        <div class=\"card\" style=\"width:400px\">\n            <div class=\"card-header text-center\">\n              <h5>Depart Flight Info: </h5>\n            </div>\n            <div class=\"card-body\">\n              <h4 class=\"card-title\">From : {{ currentPackage.flight.OutboundLeg.OriginId }}</h4>\n              <p class=\"card-text\">To : {{ currentPackage.flight.OutboundLeg.DestinationId }}</p>\n              <p class=\"card-text\">Airlines : {{currentPackage.flight.OutboundLeg.CarrierIds}} </p>\n              <p class=\"card-text\">Price : {{currentPackage.flight.MinPrice }} </p>\n              <!-- <div *ngFor=\"let flightname of currentPackage.flight.OutboundLeg.CarrierIds\">\n                <p>flightname</p>\n              </div> -->\n            </div>\n          </div>\n\n          <div class=\"card\" style=\"width:400px\">\n              <div class=\"card-header text-center\">\n                <h5>Return Flight Info: </h5>\n              </div>\n              <div class=\"card-body\">\n                <h4 class=\"card-title\">From : {{ currentPackage.returnflight.OutboundLeg.OriginId }}</h4>\n                <p class=\"card-text\">To : {{ currentPackage.returnflight.OutboundLeg.DestinationId }}</p>\n                <p class=\"card-text\">Airlines : {{currentPackage.returnflight.OutboundLeg.CarrierIds}} </p>\n                <p class=\"card-text\">Price : {{currentPackage.returnflight.MinPrice }} </p>\n              </div>\n            </div>\n\n            <div class=\"card\" style=\"width:400px\">\n                <div class=\"card-header text-center\">\n                  <h5>Hotel Info: </h5>\n                </div>\n                <div class=\"card-body\">\n                  <h4 class=\"card-title\">Hotel Name : {{ currentPackage.hotel.hotelname }}</h4>\n                  <p class=\"card-text\">Rating : {{ currentPackage.hotel.rating }}</p>\n                  <p class=\"card-text\">Address : {{currentPackage.hotel.hoteladdress }} </p>\n                </div>\n              </div>\n        </div>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n        <!-- <button type=\"button\" class=\"btn btn-primary\" (click)=\"downloadPDF()\">Save to pdf</button> -->\n      </div>\n    </div>\n  </div>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/create-package/create-package.component.html": 
@@ -51,6 +51,17 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<section>\n  <div class=\"container\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-12 col-md-8 col-lg-8 col-xl-6\">\n        <div class=\"row\">\n          <div class=\"col text-center\">\n            <h1>Create Package</h1>\n          </div>\n        </div>\n        <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" id=\"home-tab\" data-toggle=\"tab\" href=\"#home\" role=\"tab\" aria-controls=\"home\"\n              aria-selected=\"true\">Details</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"airport-tab\" data-toggle=\"tab\" href=\"#airport\" role=\"tab\" aria-controls=\"airport\"\n              aria-selected=\"false\">Airport</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#profile\" role=\"tab\" aria-controls=\"profile\"\n              aria-selected=\"false\">Flights</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" id=\"return-tab\" data-toggle=\"tab\" href=\"#return\" role=\"tab\" aria-controls=\"return\"\n                aria-selected=\"false\">Return Flights</a>\n            </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"contact-tab\" data-toggle=\"tab\" href=\"#contact\" role=\"tab\" aria-controls=\"contact\"\n              aria-selected=\"false\">Hotels</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"send-tab\" data-toggle=\"tab\" href=\"#send\" role=\"tab\" aria-controls=\"send\"\n              aria-selected=\"false\">Submit</a>\n          </li>\n        </ul>\n        <div class=\"tab-content\" id=\"myTabContent\">\n          <div class=\"tab-pane fade show active\" id=\"home\" role=\"tabpanel\" aria-labelledby=\"home-tab\">\n            <form #it=\"ngForm\" (ngSubmit)=\"onSubmit(it)\" novalidate>\n              <div class=\"row align-items-center\">\n                <div class=\"col mt-4\">\n                  <input ngModel name=\"packageName\" #packageName=\"ngModel\" type=\"text\" required class=\"form-control\"\n                    placeholder=\"Package Name\">\n                </div>\n              </div>\n              <div class=\"row align-items-center mt-4\">\n                <div class=\"col\">\n                  <input ngModel name=\"source\" #source=\"ngModel\" required type=\"text\" class=\"form-control\"\n                    placeholder=\"Source\">\n                </div>\n              </div>\n              <div class=\"row align-items-center mt-4\">\n                <div class=\"col\">\n                  <input ngModel name=\"dest\" #dest=\"ngModel\" required type=\"text\" class=\"form-control\"\n                    placeholder=\"Destination\">\n                </div>\n              </div>\n              <div class=\"row align-items-center mt-4\">\n                <div class=\"col\">\n                  <input ngModel name=\"travelstartdate\" #travelstartdate=\"ngModel\" required type=\"text\" bsDatepicker\n                    class=\"form-control\" placeholder=\"Travel Start Date\">\n                </div>\n              </div>\n              <div class=\"row align-items-center mt-4\">\n                <div class=\"col\">\n                  <input ngModel name=\"travelreturndate\" #travelreturndate=\"ngModel\" required type=\"text\" bsDatepicker\n                    class=\"form-control\" placeholder=\"Travel Return Date\">\n                </div>\n              </div>\n              <button class=\"btn btn-primary mt-4\">Generate</button>\n            </form>\n          </div>\n          <div class=\"tab-pane fade\" id=\"airport\" role=\"tabpanel\" aria-labelledby=\"airport-tab\">Get Source Airports\n            <div *ngFor=\"let airport of sourceairports\">\n              <div class=\"card\">\n                <div class=\"card-body\">\n                  <p class=\"card-title\">{{airport.PlaceName}}, {{airport.CountryName}}  ({{airport.PlaceId}})</p>\n                  <p class=\"btn btn-primary\" (click)=\"selectSourceAirport(airport)\">Choose {{airport.PlaceId}}</p>\n                </div>\n              </div>\n            </div>\n\n            Destination Airports:\n            <div *ngFor=\"let airport of destairports\">\n                <div class=\"card\">\n                  <div class=\"card-body\">\n                    <p class=\"card-title\">{{airport.PlaceName}}, {{airport.CountryName}}  ({{airport.PlaceId}})</p>\n                    <p class=\"btn btn-primary\" (click)=\"selectDestAirport(airport)\">Choose {{airport.PlaceId}}</p>\n                  </div>\n                </div>\n              </div>\n          </div>\n          <div class=\"tab-pane fade\" id=\"profile\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">Get Flights\n\n            <div *ngFor=\"let flight of Quotes\">\n              <div class=\"card\">\n                <div class=\"card-body\">\n                  <p class=\"card-text\">From {{ getPlaceName(flight.OutboundLeg.OriginId) }} to\n                    {{ getPlaceName(flight.OutboundLeg.DestinationId) }} </p>\n                    <p class=\"card-text\">Airlines: {{getFlightName(flight.OutboundLeg.CarrierIds)}}</p>\n                  <p class=\"card-text\">Price {{ flight.MinPrice }}</p>\n                  <p class=\"btn btn-primary\" (click)=\"filghtBook(flight)\">Book</p>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div class=\"tab-pane fade\" id=\"return\" role=\"tabpanel\" aria-labelledby=\"return-tab\">Get return Flights\n\n              <div *ngFor=\"let flight of returnQuotes\">\n                <div class=\"card\">\n                  <div class=\"card-body\">\n                    <p class=\"card-text\">From {{ getReturnPlaceName(flight.OutboundLeg.OriginId) }} to\n                      {{ getReturnPlaceName(flight.OutboundLeg.DestinationId) }} </p>\n                    <p class=\"card-text\">Airlines: {{getReturnFlightName(flight.OutboundLeg.CarrierIds)}}</p>\n                    <p class=\"card-text\">Price {{ flight.MinPrice }}</p>\n                    <p class=\"btn btn-primary\" (click)=\"returnfilghtBook(flight)\">Book</p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          <div class=\"tab-pane fade\" id=\"contact\" role=\"tabpanel\" aria-labelledby=\"contact-tab\">Get Hotels\n            <div *ngFor=\"let hotel of hotels\">\n              <div class=\"card\">\n                <div class=\"card-body\">\n                  <p class=\"card-text\">Hotel Name:  {{ hotel.name }}</p>\n                  <p class=\"card-text\">Rating: {{ hotel.rating }}</p>\n                  <p class=\"card-text\">Address:  {{ hotel.formatted_address }}</p>\n                  <p class=\"btn btn-primary\" (click)=\"selectHotel(hotel)\">Book</p>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div class=\"tab-pane fade\" id=\"send\" role=\"tabpanel\" aria-labelledby=\"send-tab\">Get Hotels\n            <button type=\"btn-primary\" (click)=\"submitPackage()\">Create Package</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<!--Flights Modal -->\n<div class=\"modal fade\" id=\"Modal1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"ModalLabel1\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"ModalLabel1\">Flights</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngFor=\"let flight of Quotes\">\n          <div class=\"radio\">\n            <label><input type=\"radio\" name=\"{{flight.QuoteId}}\">From {{ flight.OutboundLeg.OriginId }} to\n              {{ flight.OutboundLeg.DestinationId }} Price {{ flight.MinPrice }}</label>\n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Done</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!--Hotel Modal -->\n<div class=\"modal fade\" id=\"Modal2\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"ModalLabel2\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"ModalLabel2\">Hotels</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        ...\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Done</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<!-- <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\n  <li class=\"nav-item\">\n    <a class=\"nav-link active\" id=\"home-tab\" data-toggle=\"tab\" href=\"#home\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\">Home</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#profile\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\">Profile</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"contact-tab\" data-toggle=\"tab\" href=\"#contact\" role=\"tab\" aria-controls=\"contact\" aria-selected=\"false\">Contact</a>\n  </li>\n</ul>\n<div class=\"tab-content\" id=\"myTabContent\">\n  <div class=\"tab-pane fade show active\" id=\"home\" role=\"tabpanel\" aria-labelledby=\"home-tab\">...</div>\n  <div class=\"tab-pane fade\" id=\"profile\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">...</div>\n  <div class=\"tab-pane fade\" id=\"contact\" role=\"tabpanel\" aria-labelledby=\"contact-tab\">...</div>\n</div> -->\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/createspecialholiday/createspecialholiday.component.html": 
+        /*!****************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/createspecialholiday/createspecialholiday.component.html ***!
+          \****************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<form #it=\"ngForm\" (ngSubmit)=\"onSubmit(it)\" novalidate>\n    <div class=\"row align-items-center\">\n      <div class=\"col mt-4\">\n        <input ngModel name=\"packageName\" #packageName=\"ngModel\" type=\"text\" required class=\"form-control\"\n          placeholder=\"Holiday Package Name\">\n      </div>\n    </div>\n    <div class=\"row align-items-center mt-4\">\n      <div class=\"col\">\n        <input ngModel name=\"travelstartdate\" #travelstartdate=\"ngModel\" required type=\"text\" bsDatepicker\n          class=\"form-control\" placeholder=\"Travel Start Date\">\n      </div>\n    </div>\n    <div class=\"row align-items-center mt-4\">\n      <div class=\"col\">\n        <input ngModel name=\"travelreturndate\" #travelreturndate=\"ngModel\" required type=\"text\" bsDatepicker\n          class=\"form-control\" placeholder=\"Travel Return Date\">\n      </div>\n    </div>\n    <button class=\"btn btn-primary mt-4\">Add Holiday</button>\n  </form>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/dashboard/dashboard.component.html": 
@@ -105,7 +116,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"#\">Navbar</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\"\n    aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNavDropdown\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <div *ngIf=\"sendAgentType()\">\n        <li class=\"nav-item dropdown\" id=\"agent\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n            aria-haspopup=\"true\" aria-expanded=\"false\">\n            Package\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" routerLink=\"/package/create\" routerLinkActive=\"active\">Create Package</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewcreated\" routerLinkActive=\"active\">View Created Packages</a>\n          </div>\n\n        </li>\n      </div>\n      <div *ngIf=\"sendUserType()\">\n        <li class=\"nav-item dropdown\" id=\"user\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n            aria-haspopup=\"true\" aria-expanded=\"false\">\n            Package\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" routerLink=\"/package/booked\" routerLinkActive=\"active\">Booked Package</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewAll\" routerLinkActive=\"active\">View Available Packages</a>\n          </div>\n        </li>\n      </div>\n      <div *ngIf=\"sendUserType()\">\n        <li class=\"nav-item dropdown\" id=\"user\">\n          <a (click)=\"reqAgent()\" class=\"btn btn-danger\">Convert to Agent</a>\n        </li>\n      </div>\n      <div *ngIf=\"sendAdminType()\">\n        <li class=\"nav-item dropdown\" id=\"admin\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n            aria-haspopup=\"true\" aria-expanded=\"false\">\n            Dashboard\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" routerLink=\"/user/request\" routerLinkActive=\"active\">Requests</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewAll\" routerLinkActive=\"active\">View Packages</a>\n          </div>\n        </li>\n      </div>\n      <div *ngIf=\"!isLoggedIn()\">\n      <li>\n          <button class=\"btn btn-social-icon btn-google\" (click)=\"signInWithGoogle()\">Google Login<span class=\"fa fa-google\"></span></button>\n      </li>\n    </div>\n    <div *ngIf= \"isLoggedIn()\">\n      <li>\n          <a class=\"nav-link\" (click)=\"signOut()\" >Logout<span class=\"sr-only\">(current)</span></a>\n      </li>\n    </div>\n    </ul>\n  </div>\n</nav>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"#\">Navbar</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\"\n    aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNavDropdown\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <div *ngIf=\"sendAgentType()\">\n        <li class=\"nav-item dropdown\" id=\"agent\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n            aria-haspopup=\"true\" aria-expanded=\"false\">\n            Package\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" routerLink=\"/package/create\" routerLinkActive=\"active\">Create Package</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewcreated\" routerLinkActive=\"active\">View Created Packages</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/holiday/create\" routerLinkActive=\"active\">Add Special Holidays</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/holiday/view\" routerLinkActive=\"active\">View Special Holidays</a>\n          </div>\n\n        </li>\n      </div>\n      <div *ngIf=\"sendUserType()\">\n        <li class=\"nav-item dropdown\" id=\"user\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n            aria-haspopup=\"true\" aria-expanded=\"false\">\n            Package\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n              <a class=\"dropdown-item\" routerLink=\"user/package/create\" routerLinkActive=\"active\">Create Package</a>\n              <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/booked\" routerLinkActive=\"active\">Booked Package</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewAll\" routerLinkActive=\"active\">View Available Packages</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewAll\" routerLinkActive=\"active\">Created Packages</a>\n          </div>\n        </li>\n      </div>\n      <div *ngIf=\"sendUserType()\">\n        <li class=\"nav-item dropdown\" id=\"user\">\n          <a (click)=\"reqAgent()\" class=\"btn btn-danger\">Convert to Agent</a>\n        </li>\n      </div>\n      <div *ngIf=\"sendAdminType()\">\n        <li class=\"nav-item dropdown\" id=\"admin\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n            aria-haspopup=\"true\" aria-expanded=\"false\">\n            Dashboard\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" routerLink=\"/user/request\" routerLinkActive=\"active\">Requests</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/package/viewAll\" routerLinkActive=\"active\">View Packages</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/holiday/create\" routerLinkActive=\"active\">Add Special Holiday</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" routerLink=\"/holiday/view\" routerLinkActive=\"active\">View Special Holidays</a>\n          </div>\n        </li>\n      </div>\n      <div *ngIf=\"!isLoggedIn()\">\n      <li>\n          <button class=\"btn btn-social-icon btn-google\" (click)=\"signInWithGoogle()\">Google Login<span class=\"fa fa-google\"></span></button>\n      </li>\n    </div>\n    <div *ngIf= \"isLoggedIn()\">\n      <li>\n          <a class=\"nav-link\" (click)=\"signOut()\" >Logout<span class=\"sr-only\">(current)</span></a>\n      </li>\n    </div>\n    </ul>\n  </div>\n</nav>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/package/package.component.html": 
@@ -116,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h2>Available packages</h2>\r\n<div class=\"card-deck\">\r\n    <div *ngFor=\"let package of packagesList\">\r\n      <div class=\"card\" style=\"width: 20rem;\">\r\n        <div class=\"card-body text-center\">\r\n            <h5 class=\"card-title\">Package Name : {{ package.packageName }}</h5>\r\n            <p class=\"card-text\">ID : {{ package._id }}</p>\r\n            <p class=\"card-text\">Source : {{ package.source }}</p>\r\n            <p class=\"card-text\">Destination : {{ package.dest }}</p>\r\n            <p class=\"card-text\">Created By/On : {{ package.createdOn | date}}</p>\r\n            <p class=\"card-text\">Uploaded On : {{ package.updatedOn | date}}</p>\r\n            <div *ngIf=\"!usertype()\"><a (click)=\"bookpackage(package)\" class=\"btn btn-primary\">Book</a></div>\r\n            <div *ngIf=\"usertype()\"><a (click)=\"deletepackage(package)\" class=\"btn btn-danger\">Delete Package</a></div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h2>Available packages</h2>\r\n<div class=\"card-deck\">\r\n    <div *ngFor=\"let package of packagesList\">\r\n      <div class=\"card\" style=\"width: 20rem;\">\r\n        <div class=\"card-body text-center\">\r\n            <h5 class=\"card-title\">Package Name : {{ package.packageName }}</h5>\r\n            <p class=\"card-text\">ID : {{ package._id }}</p>\r\n            <p class=\"card-text\">Source : {{ package.source }}</p>\r\n            <p class=\"card-text\">Destination : {{ package.dest }}</p>\r\n            <p class=\"card-text\">From : {{ package.from | date}}</p>\r\n            <p class=\"card-text\">Till : {{ package.till | date}}</p>\r\n            <div *ngIf=\"!usertype()\"><a (click)=\"bookpackage(package)\" class=\"btn btn-primary\">Book</a></div>\r\n            <div *ngIf=\"usertype()\"><a (click)=\"deletepackage(package)\" class=\"btn btn-danger\">Delete Package</a></div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/request/request.component.html": 
@@ -141,6 +152,28 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<section>\n  <div class=\"container\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-12 col-md-8 col-lg-8 col-xl-6\">\n        <div class=\"row\">\n          <div class=\"col text-center\">\n            <h1>Register</h1>\n          </div>\n        </div>\n        <form #it=\"ngForm\" (ngSubmit)=\"onSubmit(it)\" novalidate>\n        <div class=\"row align-items-center\">\n          <div class=\"col mt-4\">\n            <input ngModel name = \"Email\" #Email=\"ngModel\" type=\"email\" required class=\"form-control\" placeholder=\"Email\">\n          </div>\n        </div>\n        <div class=\"row align-items-center mt-4\">\n          <div class=\"col\">\n            <input ngModel name=\"firstName\" #firstName=\"ngModel\" required type=\"text\" class=\"form-control\" placeholder=\"Full Name\">\n          </div>\n        </div>\n        <div class=\"row align-items-center mt-4\">\n          <div class=\"col\">\n            <input ngModel name=\"pswd\" #pswd=\"ngModel\" required type=\"password\" class=\"form-control\" placeholder=\"Password\">\n          </div>\n          <div class=\"col\">\n            <input ngModel name=\"newpswd\" #newpswd=\"ngModel\" required type=\"password\" class=\"form-control\" placeholder=\"Confirm Password\">\n          </div>\n        </div>\n        <div class=\"row justify-content-start mt-4\">\n          <div class=\"col\">\n            <!-- <div class=\"form-check\">\n              <label class=\"form-check-label\">\n                <input type=\"checkbox\" class=\"form-check-input\">\n                I Read and Accept <a href=\"\">Terms and Conditions</a>\n              </label>\n            </div> -->\n\n            <button (click)=\"signUp(Email)\" class=\"btn btn-primary mt-4\">Submit</button>\n          </div>\n        </div>\n      </form>\n      </div>\n    </div>\n  </div>\n</section>\n");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/specialholidayview/specialholidayview.component.html": 
+        /*!************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/specialholidayview/specialholidayview.component.html ***!
+          \************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngFor=\"let holiday of holidaysList\">\n  <div class=\"card\" style=\"width:400px\">\n    <div class=\"card-header text-center\">\n      <h5>Holiday Name: {{ holiday.name }} </h5>\n    </div>\n    <div class=\"card-body\">\n      <p class=\"card-title\">From Date: {{ holiday.from }}</p>\n      <p class=\"card-text\">To Date : {{ holiday.till }}</p>\n      <button class=\"btn btn-danger\" *ngIf=\"adminType()\" (click)=\"deleteHoliday(holiday)\">Delete Holiday</button>\n    </div>\n  </div>\n</div>\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-packet-create/user-packet-create.component.html": 
+        /*!************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/user-packet-create/user-packet-create.component.html ***!
+          \************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/view-created-package/view-created-package.component.html": 
         /*!****************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/view-created-package/view-created-package.component.html ***!
@@ -149,7 +182,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h2>Available packages</h2>\n<div class=\"card-deck\">\n  <div *ngFor=\"let package of packagesList\">\n    <div class=\"card\" style=\"width: 20rem;\">\n      <div class=\"card-body text-center\">\n        <h5 class=\"card-title\">Package Name : {{ package.packageName }}</h5>\n        <p class=\"card-text\">ID : {{ package._id }}</p>\n        <p class=\"card-text\">Source : {{ package.source }}</p>\n        <p class=\"card-text\">Destination : {{ package.dest }}</p>\n        <button type=\"button\" (click)=\"viewPackage(package)\" class=\"btn btn-primary\" data-toggle=\"modal\"\n          data-target=\"#exampleModalCenter\">\n          View Full Itinerary\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Modal -->\n<div class=\"modal fade\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Itinerary</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"isSelected()\">\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Package Details: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">{{ selectedPackage.packageName }}</h4>\n            <p class=\"card-text\">Source : {{ selectedPackage.source }}</p>\n            <p class=\"card-text\">Destination : {{ selectedPackage.dest }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Departure Flight: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Airlines: {{ selectedPackage.flight.OutboundLeg.CarrierIds }}</h4>\n            <p class=\"card-text\">From : {{ selectedPackage.flight.OutboundLeg.OriginId }}</p>\n            <p class=\"card-text\">To : {{ selectedPackage.flight.OutboundLeg.DestinationId }}</p>\n            <p class=\"card-text\">Departs at : {{ selectedPackage.flight.OutboundLeg.DepartureDate }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Return Flight: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Airlines: {{ selectedPackage.returnflight.OutboundLeg.CarrierIds }}</h4>\n            <p class=\"card-text\">From : {{ selectedPackage.returnflight.OutboundLeg.OriginId }}</p>\n            <p class=\"card-text\">To : {{ selectedPackage.returnflight.OutboundLeg.DestinationId }}</p>\n            <p class=\"card-text\">Departs at : {{ selectedPackage.returnflight.OutboundLeg.DepartureDate }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Hotel: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Hotel Name: {{ selectedPackage.hotel.hotelname }}</h4>\n            <p class=\"card-text\">Rating : {{ selectedPackage.hotel.rating }}</p>\n            <p class=\"card-text\">Address : {{ selectedPackage.hotel.hoteladdress }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Booked Users </h5>\n          </div>\n          <div class=\"card-body\">\n            <div *ngFor=\"let user of users\">\n              <p class=\"card-text\">User Name : {{ user.username }} and Email: {{ user.useremail }}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h2>Available packages</h2>\n<div class=\"card-deck\">\n  <div *ngFor=\"let package of packagesList\">\n    <div class=\"card\" style=\"width: 20rem;\">\n      <div class=\"card-body text-center\">\n        <h5 class=\"card-title\">Package Name : {{ package.packageName }}</h5>\n        <p class=\"card-text\">Source : {{ package.source }}</p>\n        <p class=\"card-text\">Destination : {{ package.dest }}</p>\n        <p class=\"card-text\">From : {{ package.from }}</p>\n        <p class=\"card-text\">Till : {{ package.till }}</p>\n        <button type=\"button\" (click)=\"viewPackage(package)\" class=\"btn btn-primary\" data-toggle=\"modal\"\n          data-target=\"#exampleModalCenter\">\n          View Full Itinerary\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Modal -->\n<div class=\"modal fade\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Itinerary</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"isSelected()\">\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Package Details: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">{{ selectedPackage.packageName }}</h4>\n            <p class=\"card-text\">Source : {{ selectedPackage.source }}</p>\n            <p class=\"card-text\">Destination : {{ selectedPackage.dest }}</p>\n            <p class=\"card-text\">From : {{ selectedPackage.from }}</p>\n            <p class=\"card-text\">Till : {{ selectedPackage.till }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Departure Flight: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Airlines: {{ selectedPackage.flight.OutboundLeg.CarrierIds }}</h4>\n            <p class=\"card-text\">From : {{ selectedPackage.flight.OutboundLeg.OriginId }}</p>\n            <p class=\"card-text\">To : {{ selectedPackage.flight.OutboundLeg.DestinationId }}</p>\n            <p class=\"card-text\">Departs at : {{ selectedPackage.flight.OutboundLeg.DepartureDate }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Return Flight: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Airlines: {{ selectedPackage.returnflight.OutboundLeg.CarrierIds }}</h4>\n            <p class=\"card-text\">From : {{ selectedPackage.returnflight.OutboundLeg.OriginId }}</p>\n            <p class=\"card-text\">To : {{ selectedPackage.returnflight.OutboundLeg.DestinationId }}</p>\n            <p class=\"card-text\">Departs at : {{ selectedPackage.returnflight.OutboundLeg.DepartureDate }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Hotel: </h5>\n          </div>\n          <div class=\"card-body\">\n            <h4 class=\"card-title\">Hotel Name: {{ selectedPackage.hotel.hotelname }}</h4>\n            <p class=\"card-text\">Rating : {{ selectedPackage.hotel.rating }}</p>\n            <p class=\"card-text\">Address : {{ selectedPackage.hotel.hoteladdress }}</p>\n          </div>\n        </div>\n        <div class=\"card\" style=\"width:400px\">\n          <div class=\"card-header text-center\">\n            <h5>Booked Users </h5>\n          </div>\n          <div class=\"card-body\">\n            <div *ngFor=\"let user of users\">\n              <p class=\"card-text\">User Name : {{ user.username }} and Email: {{ user.useremail }}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/viewtrip/viewtrip.component.html": 
@@ -160,7 +193,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"card\" style=\"width:400px\">\n  <div class=\"card-header text-center\">\n    <h5>User Information: </h5>\n  </div>\n  <img class=\"card-img-top\" src=\"img_avatar1.png\" alt=\"Card image\" style=\"width:100%\">\n  <div class=\"card-body\">\n    <h4 class=\"card-title\">John Doe</h4>\n    <p class=\"card-text\">Some example text some example text. John Doe is an architect and engineer</p>\n  </div>\n</div>\n\n\n<div class=\"card\" style=\"width:400px\">\n  <div class=\"card-header text-center\">\n    <h5>Selected Trip: </h5>\n  </div>\n  <img class=\"card-img-top\" src=\"img_avatar1.png\" alt=\"Card image\" style=\"width:100%\">\n  <div class=\"card-body\">\n    <h4 class=\"card-title\">John Doe</h4>\n    <p class=\"card-text\">Some example text some example text. John Doe is an architect and engineer</p>\n  </div>\n</div>\n\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div #content>\n<div class=\"card\" style=\"width:400px\" *ngIf=\"isPackageThere()\">\n  <div class=\"card-header text-center\">\n    <h5>Package Details: </h5>\n  </div>\n  <div class=\"card-body\">\n    <h4 class=\"card-title\">{{ selectedPackage.packageName }}</h4>\n    <p class=\"card-text\">Source : {{ selectedPackage.source }}</p>\n    <p class=\"card-text\">Destination : {{ selectedPackage.dest }}</p>\n    <p class=\"card-text\">From : {{ selectedPackage.from }}</p>\n    <p class=\"card-text\">Till : {{ selectedPackage.till }}</p>\n  </div>\n</div>\n<div class=\"card\" style=\"width:400px\">\n  <div class=\"card-header text-center\">\n    <h5>Departure Flight: </h5>\n  </div>\n  <div class=\"card-body\">\n    <h4 class=\"card-title\">Airlines: {{ selectedPackage.flight.OutboundLeg.CarrierIds }}</h4>\n    <p class=\"card-text\">From : {{ selectedPackage.flight.OutboundLeg.OriginId }}</p>\n    <p class=\"card-text\">To : {{ selectedPackage.flight.OutboundLeg.DestinationId }}</p>\n    <p class=\"card-text\">Departs at : {{ selectedPackage.flight.OutboundLeg.DepartureDate }}</p>\n  </div>\n</div>\n<div class=\"card\" style=\"width:400px\">\n  <div class=\"card-header text-center\">\n    <h5>Return Flight: </h5>\n  </div>\n  <div class=\"card-body\">\n    <h4 class=\"card-title\">Airlines: {{ selectedPackage.returnflight.OutboundLeg.CarrierIds }}</h4>\n    <p class=\"card-text\">From : {{ selectedPackage.returnflight.OutboundLeg.OriginId }}</p>\n    <p class=\"card-text\">To : {{ selectedPackage.returnflight.OutboundLeg.DestinationId }}</p>\n    <p class=\"card-text\">Departs at : {{ selectedPackage.returnflight.OutboundLeg.DepartureDate }}</p>\n  </div>\n</div>\n<div class=\"card\" style=\"width:400px\">\n  <div class=\"card-header text-center\">\n    <h5>Hotel: </h5>\n  </div>\n  <div class=\"card-body\">\n    <h4 class=\"card-title\">Hotel Name: {{ selectedPackage.hotel.hotelname }}</h4>\n    <p class=\"card-text\">Rating : {{ selectedPackage.hotel.rating }}</p>\n    <p class=\"card-text\">Address : {{ selectedPackage.hotel.hoteladdress }}</p>\n  </div>\n</div>\n<button class=\"btn btn-primary\" (click)=\"downloadPDF()\">Save as PDF</button>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -484,6 +517,9 @@
             /* harmony import */ var _viewtrip_viewtrip_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./viewtrip/viewtrip.component */ "./src/app/viewtrip/viewtrip.component.ts");
             /* harmony import */ var _bookedpackage_bookedpackage_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./bookedpackage/bookedpackage.component */ "./src/app/bookedpackage/bookedpackage.component.ts");
             /* harmony import */ var _view_created_package_view_created_package_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./view-created-package/view-created-package.component */ "./src/app/view-created-package/view-created-package.component.ts");
+            /* harmony import */ var _createspecialholiday_createspecialholiday_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./createspecialholiday/createspecialholiday.component */ "./src/app/createspecialholiday/createspecialholiday.component.ts");
+            /* harmony import */ var _specialholidayview_specialholidayview_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./specialholidayview/specialholidayview.component */ "./src/app/specialholidayview/specialholidayview.component.ts");
+            /* harmony import */ var _user_packet_create_user_packet_create_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user-packet-create/user-packet-create.component */ "./src/app/user-packet-create/user-packet-create.component.ts");
             var routes = [
                 { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
                 { path: 'signup', component: _signup_signup_component__WEBPACK_IMPORTED_MODULE_4__["SignupComponent"] },
@@ -494,7 +530,10 @@
                 { path: 'user/request', component: _request_request_component__WEBPACK_IMPORTED_MODULE_8__["RequestComponent"] },
                 { path: 'package/booked', component: _bookedpackage_bookedpackage_component__WEBPACK_IMPORTED_MODULE_10__["BookedpackageComponent"] },
                 { path: 'package/viewcreated', component: _view_created_package_view_created_package_component__WEBPACK_IMPORTED_MODULE_11__["ViewCreatedPackageComponent"] },
-                { path: 'view/ticket', component: _viewtrip_viewtrip_component__WEBPACK_IMPORTED_MODULE_9__["ViewtripComponent"] }
+                { path: 'view/ticket', component: _viewtrip_viewtrip_component__WEBPACK_IMPORTED_MODULE_9__["ViewtripComponent"] },
+                { path: 'holiday/create', component: _createspecialholiday_createspecialholiday_component__WEBPACK_IMPORTED_MODULE_12__["CreatespecialholidayComponent"] },
+                { path: 'holiday/view', component: _specialholidayview_specialholidayview_component__WEBPACK_IMPORTED_MODULE_13__["SpecialholidayviewComponent"] },
+                { path: 'user/package/create', component: _user_packet_create_user_packet_create_component__WEBPACK_IMPORTED_MODULE_14__["UserPacketCreateComponent"] }
             ];
             var AppRoutingModule = /** @class */ (function () {
                 function AppRoutingModule() {
@@ -579,6 +618,9 @@
             /* harmony import */ var _viewtrip_viewtrip_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./viewtrip/viewtrip.component */ "./src/app/viewtrip/viewtrip.component.ts");
             /* harmony import */ var _bookedpackage_bookedpackage_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./bookedpackage/bookedpackage.component */ "./src/app/bookedpackage/bookedpackage.component.ts");
             /* harmony import */ var _view_created_package_view_created_package_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./view-created-package/view-created-package.component */ "./src/app/view-created-package/view-created-package.component.ts");
+            /* harmony import */ var _createspecialholiday_createspecialholiday_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./createspecialholiday/createspecialholiday.component */ "./src/app/createspecialholiday/createspecialholiday.component.ts");
+            /* harmony import */ var _specialholidayview_specialholidayview_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./specialholidayview/specialholidayview.component */ "./src/app/specialholidayview/specialholidayview.component.ts");
+            /* harmony import */ var _user_packet_create_user_packet_create_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./user-packet-create/user-packet-create.component */ "./src/app/user-packet-create/user-packet-create.component.ts");
             var config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_15__["AuthServiceConfig"]([
                 {
                     id: angularx_social_login__WEBPACK_IMPORTED_MODULE_15__["GoogleLoginProvider"].PROVIDER_ID,
@@ -608,7 +650,10 @@
                         _request_request_component__WEBPACK_IMPORTED_MODULE_19__["RequestComponent"],
                         _viewtrip_viewtrip_component__WEBPACK_IMPORTED_MODULE_20__["ViewtripComponent"],
                         _bookedpackage_bookedpackage_component__WEBPACK_IMPORTED_MODULE_21__["BookedpackageComponent"],
-                        _view_created_package_view_created_package_component__WEBPACK_IMPORTED_MODULE_22__["ViewCreatedPackageComponent"]
+                        _view_created_package_view_created_package_component__WEBPACK_IMPORTED_MODULE_22__["ViewCreatedPackageComponent"],
+                        _createspecialholiday_createspecialholiday_component__WEBPACK_IMPORTED_MODULE_23__["CreatespecialholidayComponent"],
+                        _specialholidayview_specialholidayview_component__WEBPACK_IMPORTED_MODULE_24__["SpecialholidayviewComponent"],
+                        _user_packet_create_user_packet_create_component__WEBPACK_IMPORTED_MODULE_25__["UserPacketCreateComponent"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -851,6 +896,7 @@
                     console.log('Selected values: ' + this.packageDetails);
                     this.flightSelected = this.flightDetailsModify(flightBooked);
                     console.log('Booked flight: ' + JSON.stringify(flightBooked));
+                    // tslint:disable-next-line: triple-equals
                     if (this.returnflight == null || this.returnflight == undefined) {
                     }
                     else {
@@ -862,6 +908,7 @@
                 CreatePackageComponent.prototype.returnfilghtBook = function (flightBooked) {
                     this.returnflight = this.returnflightDetailsModify(flightBooked);
                     console.log('return flight ' + JSON.stringify(this.returnflight));
+                    // tslint:disable-next-line: triple-equals
                     if (this.flightSelected == null || this.flightSelected == undefined) {
                     }
                     else {
@@ -947,7 +994,7 @@
                             else {
                                 console.log('packages upfdated ' + data);
                                 localStorage.setItem('package', data._id);
-                                _this.router.navigate(['/package/viewAll']);
+                                _this.router.navigate(['/view/ticket']);
                             }
                         });
                     }
@@ -987,6 +1034,7 @@
                 CreatePackageComponent.prototype.selectSourceAirport = function (airport) {
                     console.log(airport + 'choosen source');
                     this.sourceairport = airport.PlaceId;
+                    // tslint:disable-next-line: triple-equals
                     if (this.destairport == null || this.destairport == undefined) {
                         console.log('need to select dest airport');
                     }
@@ -998,6 +1046,7 @@
                 CreatePackageComponent.prototype.selectDestAirport = function (airport) {
                     console.log(airport + 'choosen source');
                     this.destairport = airport.PlaceId;
+                    // tslint:disable-next-line: triple-equals
                     if (this.sourceairport == null || this.sourceairport == undefined) {
                         console.log('need to select source airport');
                     }
@@ -1021,6 +1070,65 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./create-package.component.css */ "./src/app/create-package/create-package.component.css")).default]
                 })
             ], CreatePackageComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/createspecialholiday/createspecialholiday.component.css": 
+        /*!*************************************************************************!*\
+          !*** ./src/app/createspecialholiday/createspecialholiday.component.css ***!
+          \*************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NyZWF0ZXNwZWNpYWxob2xpZGF5L2NyZWF0ZXNwZWNpYWxob2xpZGF5LmNvbXBvbmVudC5jc3MifQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/createspecialholiday/createspecialholiday.component.ts": 
+        /*!************************************************************************!*\
+          !*** ./src/app/createspecialholiday/createspecialholiday.component.ts ***!
+          \************************************************************************/
+        /*! exports provided: CreatespecialholidayComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreatespecialholidayComponent", function () { return CreatespecialholidayComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dataintegrate.service */ "./src/app/dataintegrate.service.ts");
+            var CreatespecialholidayComponent = /** @class */ (function () {
+                function CreatespecialholidayComponent(router, dataservice) {
+                    this.router = router;
+                    this.dataservice = dataservice;
+                }
+                CreatespecialholidayComponent.prototype.ngOnInit = function () {
+                    console.log('special package session ' + localStorage.getItem('user'));
+                    if (localStorage.getItem('user') == null || localStorage.length <= 0) {
+                        this.router.navigate(['/']);
+                        // tslint:disable-next-line: triple-equals
+                    }
+                    else if (JSON.parse((localStorage.getItem('user'))).usertype == 'USER') {
+                        this.router.navigate(['/']);
+                    }
+                };
+                CreatespecialholidayComponent.prototype.onSubmit = function (it) {
+                    this.dataservice.addspecialPackage(it.value).subscribe(function (special) {
+                        console.log('special added ' + special);
+                    });
+                };
+                return CreatespecialholidayComponent;
+            }());
+            CreatespecialholidayComponent.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+                { type: _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__["DataintegrateService"] }
+            ]; };
+            CreatespecialholidayComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-createspecialholiday',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./createspecialholiday.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/createspecialholiday/createspecialholiday.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./createspecialholiday.component.css */ "./src/app/createspecialholiday/createspecialholiday.component.css")).default]
+                })
+            ], CreatespecialholidayComponent);
             /***/ 
         }),
         /***/ "./src/app/dashboard/dashboard.component.css": 
@@ -1131,6 +1239,10 @@
                     console.log('dataservice ' + JSON.stringify(it));
                     return this._httpClient.post('/package/packagecreate', '', { params: it });
                 };
+                // createUserPackage(it: any) {
+                //   console.log('dataservice ' + JSON.stringify(it));
+                //   return this._httpClient.post<any>('/userpackage/pckcreate', '', {params: it});
+                // }
                 DataintegrateService.prototype.getAllPackages = function () {
                     return this._httpClient.get('/package/allpackages');
                 };
@@ -1166,6 +1278,25 @@
                 DataintegrateService.prototype.deletePackage = function (packageID) {
                     var packID = { packid: packageID };
                     return this._httpClient.delete('package/deletebyid', { params: packID });
+                };
+                DataintegrateService.prototype.getPackageByPackageID = function (packageID) {
+                    var packID = { packid: packageID };
+                    return this._httpClient.get('package/packagebypackid', { params: packID });
+                };
+                // getUserPackageByPackageID(packageID: any) {
+                //   const packID = {packid: packageID};
+                //   return this._httpClient.get<any>('userpackage/packagebypackid', {params: packID});
+                // }
+                DataintegrateService.prototype.addspecialPackage = function (specialholiday) {
+                    console.log('data holiday : ' + JSON.stringify(specialholiday));
+                    return this._httpClient.post('holiday/addspecial', '', { params: specialholiday });
+                };
+                DataintegrateService.prototype.getHolidays = function () {
+                    return this._httpClient.get('holiday/getAllSpecial');
+                };
+                DataintegrateService.prototype.deleteHoliday = function (holidayId) {
+                    var holiID = { holidayid: holidayId };
+                    return this._httpClient.delete('holiday/deleteHolidayByID', { params: holiID });
                 };
                 return DataintegrateService;
             }());
@@ -1835,6 +1966,131 @@
             ], SignupComponent);
             /***/ 
         }),
+        /***/ "./src/app/specialholidayview/specialholidayview.component.css": 
+        /*!*********************************************************************!*\
+          !*** ./src/app/specialholidayview/specialholidayview.component.css ***!
+          \*********************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NwZWNpYWxob2xpZGF5dmlldy9zcGVjaWFsaG9saWRheXZpZXcuY29tcG9uZW50LmNzcyJ9 */");
+            /***/ 
+        }),
+        /***/ "./src/app/specialholidayview/specialholidayview.component.ts": 
+        /*!********************************************************************!*\
+          !*** ./src/app/specialholidayview/specialholidayview.component.ts ***!
+          \********************************************************************/
+        /*! exports provided: SpecialholidayviewComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SpecialholidayviewComponent", function () { return SpecialholidayviewComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dataintegrate.service */ "./src/app/dataintegrate.service.ts");
+            var SpecialholidayviewComponent = /** @class */ (function () {
+                function SpecialholidayviewComponent(router, dataservice) {
+                    this.router = router;
+                    this.dataservice = dataservice;
+                }
+                SpecialholidayviewComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.dataservice.getHolidays().subscribe(function (allspecial) {
+                        _this.holidaysList = allspecial;
+                    });
+                };
+                SpecialholidayviewComponent.prototype.adminType = function () {
+                    // tslint:disable-next-line: triple-equals
+                    if (JSON.parse((localStorage.getItem('user'))).usertype == 'ADMIN') {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                };
+                SpecialholidayviewComponent.prototype.deleteHoliday = function (holiday) {
+                    this.dataservice.deleteHoliday(holiday._id).subscribe(function (holidayDeleted) {
+                        console.log('deleted holiday ' + holidayDeleted);
+                    });
+                };
+                return SpecialholidayviewComponent;
+            }());
+            SpecialholidayviewComponent.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+                { type: _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__["DataintegrateService"] }
+            ]; };
+            SpecialholidayviewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-specialholidayview',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./specialholidayview.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/specialholidayview/specialholidayview.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./specialholidayview.component.css */ "./src/app/specialholidayview/specialholidayview.component.css")).default]
+                })
+            ], SpecialholidayviewComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/user-packet-create/user-packet-create.component.css": 
+        /*!*********************************************************************!*\
+          !*** ./src/app/user-packet-create/user-packet-create.component.css ***!
+          \*********************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItcGFja2V0LWNyZWF0ZS91c2VyLXBhY2tldC1jcmVhdGUuY29tcG9uZW50LmNzcyJ9 */");
+            /***/ 
+        }),
+        /***/ "./src/app/user-packet-create/user-packet-create.component.ts": 
+        /*!********************************************************************!*\
+          !*** ./src/app/user-packet-create/user-packet-create.component.ts ***!
+          \********************************************************************/
+        /*! exports provided: UserPacketCreateComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserPacketCreateComponent", function () { return UserPacketCreateComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dataintegrate.service */ "./src/app/dataintegrate.service.ts");
+            /* harmony import */ var _flights_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../flights.service */ "./src/app/flights.service.ts");
+            /* harmony import */ var _hotels_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hotels.service */ "./src/app/hotels.service.ts");
+            var UserPacketCreateComponent = /** @class */ (function () {
+                // tslint:disable-next-line: max-line-length
+                function UserPacketCreateComponent(router, dataservice, flightService, hotelService) {
+                    this.router = router;
+                    this.dataservice = dataservice;
+                    this.flightService = flightService;
+                    this.hotelService = hotelService;
+                }
+                UserPacketCreateComponent.prototype.ngOnInit = function () {
+                    console.log('create package session ' + localStorage.getItem('user'));
+                    if (localStorage.getItem('user') == null || localStorage.length <= 0) {
+                        this.router.navigate(['/']);
+                        // tslint:disable-next-line: triple-equals
+                    }
+                    else if (JSON.parse((localStorage.getItem('user'))).usertype != 'USER') {
+                        this.router.navigate(['/']);
+                    }
+                };
+                return UserPacketCreateComponent;
+            }());
+            UserPacketCreateComponent.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+                { type: _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__["DataintegrateService"] },
+                { type: _flights_service__WEBPACK_IMPORTED_MODULE_4__["FlightsService"] },
+                { type: _hotels_service__WEBPACK_IMPORTED_MODULE_5__["HotelsService"] }
+            ]; };
+            UserPacketCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-user-packet-create',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./user-packet-create.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-packet-create/user-packet-create.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./user-packet-create.component.css */ "./src/app/user-packet-create/user-packet-create.component.css")).default]
+                })
+            ], UserPacketCreateComponent);
+            /***/ 
+        }),
         /***/ "./src/app/view-created-package/view-created-package.component.css": 
         /*!*************************************************************************!*\
           !*** ./src/app/view-created-package/view-created-package.component.css ***!
@@ -1876,6 +2132,7 @@
                     this.selectedPackage = packageselct;
                 };
                 ViewCreatedPackageComponent.prototype.isSelected = function () {
+                    // tslint:disable-next-line: triple-equals
                     if (this.selectedPackage == null || this.selectedPackage == undefined) {
                         return false;
                     }
@@ -1924,21 +2181,71 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewtripComponent", function () { return ViewtripComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dataintegrate.service */ "./src/app/dataintegrate.service.ts");
+            /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.min.js");
+            /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/ __webpack_require__.n(jspdf__WEBPACK_IMPORTED_MODULE_4__);
             var ViewtripComponent = /** @class */ (function () {
-                function ViewtripComponent() {
+                function ViewtripComponent(router, dataservice) {
+                    this.router = router;
+                    this.dataservice = dataservice;
                 }
                 ViewtripComponent.prototype.ngOnInit = function () {
                     // tslint:disable-next-line: triple-equals
                     if (localStorage.length > 0 && (localStorage.getItem('package') != null || localStorage.getItem('package') != undefined)) {
                         var packageID = localStorage.getItem('package');
                         console.log('package id ' + packageID);
+                        this.there = true;
+                        this.getPackagebyPackageId(packageID);
+                        // tslint:disable-next-line: max-line-length
+                        // } else if (localStorage.length > 0 && (localStorage.getItem('userpackage') != null || localStorage.getItem('userpackage') != undefined )) {
+                        //   const packageID = localStorage.getItem('userpackage');
+                        //   console.log('package id ' + packageID);
+                        //   this.there = true;
+                        //   this.getUserPackagebyPackageId(packageID);
+                        // }
                     }
                     else {
+                        this.there = false;
                         console.log('missing package');
                     }
                 };
+                ViewtripComponent.prototype.isPackageThere = function () {
+                    if (this.there) {
+                        return true;
+                    }
+                    return false;
+                };
+                ViewtripComponent.prototype.getPackagebyPackageId = function (packageID) {
+                    var _this = this;
+                    this.dataservice.getPackageByPackageID(packageID).subscribe(function (packagebyid) {
+                        _this.selectedPackage = packagebyid;
+                    });
+                    localStorage.removeItem('package');
+                };
+                ViewtripComponent.prototype.downloadPDF = function () {
+                    var doc = new jspdf__WEBPACK_IMPORTED_MODULE_4__();
+                    var specialElementHandler = {
+                        '#editor': function (element, renderer) {
+                            return true;
+                        }
+                    };
+                    var content = this.content.nativeElement;
+                    doc.fromHTML(content.innerHTML, 15, 15, {
+                        'width': 190,
+                        'elementHandlers': specialElementHandler
+                    });
+                    doc.save(this.selectedPackage.packageName + '.pdf');
+                };
                 return ViewtripComponent;
             }());
+            ViewtripComponent.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+                { type: _dataintegrate_service__WEBPACK_IMPORTED_MODULE_3__["DataintegrateService"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('content', { static: true })
+            ], ViewtripComponent.prototype, "content", void 0);
             ViewtripComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-viewtrip',

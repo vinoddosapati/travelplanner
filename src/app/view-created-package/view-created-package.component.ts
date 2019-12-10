@@ -27,7 +27,8 @@ export class ViewCreatedPackageComponent implements OnInit {
   }
 
   isSelected() {
-    if (this.selectedPackage == null || this.selectedPackage == undefined){
+    // tslint:disable-next-line: triple-equals
+    if (this.selectedPackage == null || this.selectedPackage == undefined) {
       return false;
     } else {
       this.getUsers(this.selectedPackage.bookings);

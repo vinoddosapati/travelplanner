@@ -22,6 +22,9 @@ import { RequestComponent } from './request/request.component';
 import { ViewtripComponent } from './viewtrip/viewtrip.component';
 import { BookedpackageComponent } from './bookedpackage/bookedpackage.component';
 import { ViewCreatedPackageComponent } from './view-created-package/view-created-package.component';
+import { CreatespecialholidayComponent } from './createspecialholiday/createspecialholiday.component';
+import { SpecialholidayviewComponent } from './specialholidayview/specialholidayview.component';
+import { UserPacketCreateComponent } from './user-packet-create/user-packet-create.component';
 
 const config = new AuthServiceConfig([
   {
@@ -48,7 +51,10 @@ export function provideConfig() {
     RequestComponent,
     ViewtripComponent,
     BookedpackageComponent,
-    ViewCreatedPackageComponent
+    ViewCreatedPackageComponent,
+    CreatespecialholidayComponent,
+    SpecialholidayviewComponent,
+    UserPacketCreateComponent
   ],
   imports: [
     BrowserModule,

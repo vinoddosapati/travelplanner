@@ -13,12 +13,15 @@ const api = require('./server/routes/api.js');
 const user = require('./db/controller/userController');
 const package = require('./db/controller/packageController');
 const request = require('./db/controller/requestController');
+const holiday = require('./db/controller/holidayController');
+//const userpackage = require('./db/controller/userpacketController');
 // Set our api routes
 app.use('/api', api);
 app.use('/user', user);
 app.use('/package', package);
 app.use('/request', request);
-
+app.use('/holiday', holiday);
+//app.use('/userpackage', userpackage);
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

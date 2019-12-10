@@ -35,6 +35,21 @@ router.delete('/deletebyid', (req, res) => {
   deletePackageByID(req, res);
 });
 
+router.get('/packagebypackid', (req, res) => {
+  console.log('get package by package id' + JSON.stringify(req.originalUrl));
+  getPackageByPackageID(req, res);
+});
+
+function getPackageByPackageID(req, res) {
+  packageSchema.findOne({"_id": req.query.packid}, function(err, packages) {
+    if (err) {throw err;}
+    // object of the user
+    console.log('get package info ' + packages);
+    res.send(packages);
+
+  });
+}
+
 function deletePackageByID(req, res) {
   packageSchema.deleteOne({"_id": req.query.packid}, function(err, packages) {
     if (err) {throw err;}
@@ -98,8 +113,8 @@ function createPackage(req, res) {
   package.source = req.query.source;
   package.uploadedBy = req.query.uploadedby;
   package.dest = req.query.dest;
-  package.createdOn = Date.now();
-  package.updatedOn = Date.now();
+  package.from = req.query.travelstartdate;
+  package.till = req.query.travelreturndate;
 
   package.flight.QuoteId = req.query.QuoteId;
   package.flight.MinPrice= req.query.MinPrice;
