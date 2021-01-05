@@ -23,7 +23,7 @@
     "angular-webstorage-service": "^1.0.2",
     "angularx-social-login": "^2.2.0",
     "aws-sdk": "^2.573.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "express-handlebars": "^3.1.0",
